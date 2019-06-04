@@ -71,6 +71,10 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Fish Attributes")
 		float distBehindSpeedUpRange = 3000;
 
+	// Go faster when fish is this distance behind leader
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Fish Attributes")
+		float distBehindPreyToEat = 1000;
+
 	// Multiplies With Radius of Fish Interaction Sphere for neighbor seperation
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Advanced Settings")
 		float SeperationDistanceMultiplier = 0.75;
@@ -229,6 +233,11 @@ public:
 	{
 		return curVelocity;
 	};
+
+	UFUNCTION(BlueprintNativeEvent)
+		void EatPrey(class AActor* Prey);
+
+	void EatPrey_Implementation(class AActor* Prey);
 
 protected:
 	/** Overrided tick function */
