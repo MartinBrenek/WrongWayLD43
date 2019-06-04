@@ -198,6 +198,12 @@ void AFlockFish::OnBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor
 	}
 }
 
+void AFlockFish::EatPrey_Implementation(AActor* Prey)
+{
+	float zLoc = this->minZ + FMath::Abs(0.25 * this->maxZ);
+	Prey->SetActorLocation(FVector(FMath::FRandRange(this->minX, this->maxX), FMath::FRandRange(this->minY, this->maxX), zLoc));
+}
+
 void AFlockFish::OnEndOverlap(UPrimitiveComponent* OverlappedComponent, AActor* otherActor, UPrimitiveComponent* otherComp, int32 otherBodyIndex)
 {
 	if (nearbyEnemies.Find(otherActor) >= 0)

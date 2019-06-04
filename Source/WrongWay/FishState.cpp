@@ -157,10 +157,10 @@ void ChaseState::Update(float delta)
 
 void ChaseState::EatPrey()
 {
-	if (Fish->GetDistanceTo(Prey) < 1000)
+	if (Fish->GetDistanceTo(Prey) < Fish->distBehindPreyToEat)
 	{
-		float zLoc = Fish->minZ + FMath::Abs(0.25 * Fish->maxZ);
-		Prey->SetActorLocation(FVector(FMath::FRandRange(Fish->minX, Fish->maxX), FMath::FRandRange(Fish->minY, Fish->maxX), zLoc));
+		Fish->EatPrey(Prey);
+		
 		Fish->isFull = true;
 		Fish->setState(new SeekState(Fish));
 	}
