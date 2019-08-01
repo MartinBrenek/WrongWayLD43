@@ -19,6 +19,14 @@
 
 AFlockFish::AFlockFish(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) 
 {
+	DrawDebugLine(
+		GetWorld(),
+		this->GetActorLocation(),
+		(this->GetActorForwardVector() * AvoidanceDistance) + this->GetActorLocation(),
+		FColor::Blue,
+		false, -1, 0,
+		10
+	);
 	base = ObjectInitializer.CreateDefaultSubobject<UStaticMeshComponent>(this, TEXT("FishMesh"));
 	RootComponent = base;
 
@@ -37,25 +45,73 @@ AFlockFish::AFlockFish(const FObjectInitializer& ObjectInitializer) : Super(Obje
 
 void AFlockFish::Tick(float delta)
 {
-
+	FVector actorLocation = this->GetActorLocation();
 	// Setup the fish (happens on first tick only)
 	// NOTE TO SELF: consider creating a beginplay event that does this stuff (although beginplay is buggy as hell x.x)
+	DrawDebugLine(
+		GetWorld(),
+		this->GetActorLocation(),
+		(this->GetActorForwardVector() * AvoidanceDistance) + this->GetActorLocation(),
+		FColor::Red,
+		false, -1, 0,
+		10
+	);	
 	Setup();
 
 	// If debug mode true, draw interaction sphere and avoiddistance
 	Debug();
+	DrawDebugLine(
+		GetWorld(),
+		this->GetActorLocation(),
+		(this->GetActorForwardVector() * AvoidanceDistance) + actorLocation,
+		FColor::Red,
+		false, -1, 0,
+		10
+	);
 
 	// Move Bounds based on location of FishManager (if applicable)
 	MoveBounds(delta);
+	DrawDebugLine(
+		GetWorld(),
+		this->GetActorLocation(),
+		(this->GetActorForwardVector() * AvoidanceDistance) + actorLocation,
+		FColor::Red,
+		false, -1, 0,
+		10
+	);
 
 	// Manage Timers (hungerTimer, updateTimer, and turnTimer)
 	ManageTimers(delta);
+	DrawDebugLine(
+		GetWorld(),
+		this->GetActorLocation(),
+		(this->GetActorForwardVector() * AvoidanceDistance) + actorLocation,
+		FColor::Red,
+		false, -1, 0,
+		10
+	);
 
 	// Decide what state to be in
 	ChooseState();
+	DrawDebugLine(
+		GetWorld(),
+		this->GetActorLocation(),
+		(this->GetActorForwardVector() * AvoidanceDistance) + actorLocation,
+		FColor::Magenta,
+		false, -1, 0,
+		10
+	);
 
 	// Update curVelocity and curRotation through current state
 	UpdateState(delta);
+	DrawDebugLine(
+		GetWorld(),
+		this->GetActorLocation(),
+		(this->GetActorForwardVector() * AvoidanceDistance) + actorLocation,
+		FColor::Magenta,
+		false, -1, 0,
+		10
+	);
 
 	// Update world rotation and velocity
 	this->SetActorRotation(curRotation);
