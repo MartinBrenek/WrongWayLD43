@@ -15,6 +15,11 @@
 			"Name": "PathFollow",
 			"Enabled": true,
 			"MarketplaceURL": "com.epicgames.launcher://ue/marketplace/content/7c19d00ad42a4b67972eea383dedb7f3"
+		},
+		{
+			"Name": "TweenMaker",
+			"Enabled": true,
+			"MarketplaceURL": "com.epicgames.launcher://ue/marketplace/content/91e6e19b486e40ed8ec5a081474e55b3"
 		}
 	]
 }
