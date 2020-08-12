@@ -72,3 +72,11 @@ Plugins/*/Intermediate/*
 
 # Cache files for the editor to use
 DerivedDataCache/*
+.idea/.idea.WrongWay/.idea/projectSettingsUpdater.xml
+.idea/.idea.WrongWay/.idea/contentModel.xml
+.idea/.idea.WrongWay/.idea/workspace.xml
+.idea/.idea.WrongWay/.idea/modules.xml
+.idea/.idea.WrongWay/.idea/encodings.xml
+.idea/.idea.WrongWay/.idea/vcs.xml
+.idea/.idea.WrongWay/riderModule.iml
+.idea/.idea.WrongWay/.idea/indexLayout.xml
