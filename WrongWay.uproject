@@ -7,7 +7,10 @@
 		{
 			"Name": "WrongWay",
 			"Type": "Runtime",
-			"LoadingPhase": "Default"
+			"LoadingPhase": "Default",
+			"AdditionalDependencies": [
+				"Engine"
+			]
 		}
 	],
 	"Plugins": [
@@ -20,6 +23,15 @@
 			"Name": "TweenMaker",
 			"Enabled": true,
 			"MarketplaceURL": "com.epicgames.launcher://ue/marketplace/content/91e6e19b486e40ed8ec5a081474e55b3"
+		},
+		{
+			"Name": "RiderSourceCodeAccess",
+			"Enabled": true,
+			"MarketplaceURL": "com.epicgames.launcher://ue/marketplace/product/35b0d39e4cee4bccb2dabf04a4c911bb"
+		},
+		{
+			"Name": "RiderLink",
+			"Enabled": true
 		}
 	]
 }
