@@ -1,0 +1,216 @@
+// Fill out your copyright notice in the Description page of Project Settings.
+#include "BTTask_Blackboard.h"
+#include "UObject/Package.h"
+#include "BehaviorTree/Blackboard/BlackboardKeyType_Enum.h"
+#include "BehaviorTree/Blackboard/BlackboardKeyType_NativeEnum.h"
+#include "BehaviorTree/BTCompositeNode.h"
+#include "BehaviorTree/BlackboardComponent.h"
+
+UBTTask_Blackboard::UBTTask_Blackboard(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer)
+{
+	NodeName = "Blackboard Based Condition Task";
+}
+
+bool UBTTask_Blackboard::CalculateRawConditionValue(UBehaviorTreeComponent& OwnerComp) const
+{
+	const UBlackboardComponent* BlackboardComp = OwnerComp.GetBlackboardComponent();
+	// note that this may produce unexpected logical results. FALSE is a valid return value here as well
+	// @todo signal it
+	return BlackboardComp && EvaluateOnBlackboard(*BlackboardComp);
+}
+
+bool UBTTask_Blackboard::EvaluateOnBlackboard(const UBlackboardComponent& BlackboardComp) const
+{
+	bool bResult = false;
+	if (BlackboardKey.SelectedKeyType)
+	{
+		UBlackboardKeyType* KeyCDO = BlackboardKey.SelectedKeyType->GetDefaultObject<UBlackboardKeyType>();
+		const uint8* KeyMemory = BlackboardComp.GetKeyRawData(BlackboardKey.GetSelectedKeyID());
+
+		// KeyMemory can be NULL if the blackboard has its data setup wrong, so we must conditionally handle that case.
+		if (ensure(KeyCDO != NULL) && (KeyMemory != NULL))
+		{
+			const EBlackboardKeyOperation::Type Op = KeyCDO->GetTestOperation();
+			switch (Op)
+			{
+			case EBlackboardKeyOperation::Basic:
+				bResult = KeyCDO->WrappedTestBasicOperation(BlackboardComp, KeyMemory, (EBasicKeyOperation::Type)OperationType);
+				break;
+
+			case EBlackboardKeyOperation::Arithmetic:
+				bResult = KeyCDO->WrappedTestArithmeticOperation(BlackboardComp, KeyMemory, (EArithmeticKeyOperation::Type)OperationType, IntValue, FloatValue);
+				break;
+
+			case EBlackboardKeyOperation::Text:
+				bResult = KeyCDO->WrappedTestTextOperation(BlackboardComp, KeyMemory, (ETextKeyOperation::Type)OperationType, StringValue);
+				break;
+
+			default:
+				break;
+			}
+		}
+	}
+
+	return bResult;
+}
+
+EBlackboardNotificationResult UBTTask_Blackboard::OnBlackboardKeyValueChange(const UBlackboardComponent& Blackboard, FBlackboard::FKey ChangedKeyID)
+{
+	UBehaviorTreeComponent* BehaviorComp = (UBehaviorTreeComponent*)Blackboard.GetBrainComponent();
+	if (BehaviorComp == nullptr)
+	{
+		return EBlackboardNotificationResult::RemoveObserver;
+	}
+
+	if (BlackboardKey.GetSelectedKeyID() == ChangedKeyID)
+	{
+		// can't simply use BehaviorComp->RequestExecution(this) here, we need to support condition/value change modes
+
+		//const EBTDecoratorAbortRequest RequestMode = (NotifyObserver == EBTBlackboardRestart::ValueChange) ? EBTDecoratorAbortRequest::ConditionPassing : EBTDecoratorAbortRequest::ConditionResultChanged;
+		//ConditionalFlowAbort(*BehaviorComp, RequestMode);
+	}
+
+	return EBlackboardNotificationResult::ContinueObserving;
+}
+
+void UBTTask_Blackboard::DescribeRuntimeValues(const UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory, EBTDescriptionVerbosity::Type Verbosity, TArray<FString>& Values) const
+{
+	Super::DescribeRuntimeValues(OwnerComp, NodeMemory, Verbosity, Values);
+
+	const UBlackboardComponent* BlackboardComp = OwnerComp.GetBlackboardComponent();
+	FString DescKeyValue;
+
+	if (BlackboardComp)
+	{
+		DescKeyValue = BlackboardComp->DescribeKeyValue(BlackboardKey.GetSelectedKeyID(), EBlackboardDescription::OnlyValue);
+	}
+
+	const bool bResult = BlackboardComp && EvaluateOnBlackboard(*BlackboardComp);
+	Values.Add(FString::Printf(TEXT("value: %s (%s)"), *DescKeyValue, bResult ? TEXT("pass") : TEXT("fail")));
+}
+
+FString UBTTask_Blackboard::GetStaticDescription() const
+{
+	return FString::Printf(TEXT("%s: %s"), *Super::GetStaticDescription(), *CachedDescription);
+}
+
+#if WITH_EDITOR
+static UEnum* BasicOpEnum = NULL;
+static UEnum* ArithmeticOpEnum = NULL;
+static UEnum* TextOpEnum = NULL;
+
+static void CacheOperationEnums()
+{
+	if (BasicOpEnum == NULL)
+	{
+		BasicOpEnum = StaticEnum<EBasicKeyOperation::Type>();
+		check(BasicOpEnum);
+	}
+
+	if (ArithmeticOpEnum == NULL)
+	{
+		ArithmeticOpEnum = StaticEnum<EArithmeticKeyOperation::Type>();
+		check(ArithmeticOpEnum);
+	}
+
+	if (TextOpEnum == NULL)
+	{
+		TextOpEnum = StaticEnum<ETextKeyOperation::Type>();
+		check(TextOpEnum);
+	}
+}
+
+void UBTTask_Blackboard::BuildDescription()
+{
+	UBlackboardData* BlackboardAsset = GetBlackboardAsset();
+	const FBlackboardEntry* EntryInfo = BlackboardAsset ? BlackboardAsset->GetKey(BlackboardKey.GetSelectedKeyID()) : NULL;
+
+	FString BlackboardDesc = "invalid";
+	if (EntryInfo)
+	{
+		// safety feature to not crash when changing couple of properties on a bunch
+		// while "post edit property" triggers for every each of them
+		if (EntryInfo->KeyType->GetClass() == BlackboardKey.SelectedKeyType)
+		{
+			const FString KeyName = EntryInfo->EntryName.ToString();
+			CacheOperationEnums();		
+
+			const EBlackboardKeyOperation::Type Op = EntryInfo->KeyType->GetTestOperation();
+			switch (Op)
+			{
+			case EBlackboardKeyOperation::Basic:
+				BlackboardDesc = FString::Printf(TEXT("%s is %s"), *KeyName, *BasicOpEnum->GetDisplayNameTextByValue(OperationType).ToString());
+				break;
+
+			case EBlackboardKeyOperation::Arithmetic:
+				BlackboardDesc = FString::Printf(TEXT("%s %s %s"), *KeyName, *ArithmeticOpEnum->GetDisplayNameTextByValue(OperationType).ToString(),
+					*EntryInfo->KeyType->DescribeArithmeticParam(IntValue, FloatValue));
+				break;
+
+			case EBlackboardKeyOperation::Text:
+				BlackboardDesc = FString::Printf(TEXT("%s %s [%s]"), *KeyName, *TextOpEnum->GetDisplayNameTextByValue(OperationType).ToString(), *StringValue);
+				break;
+
+			default: break;
+			}
+		}
+	}
+
+	CachedDescription = BlackboardDesc;
+}
+
+void UBTTask_Blackboard::PostEditChangeProperty(FPropertyChangedEvent& PropertyChangedEvent)
+{
+	Super::PostEditChangeProperty(PropertyChangedEvent);
+	if (PropertyChangedEvent.Property == NULL)
+	{
+		return;
+	}
+
+	const FName ChangedPropName = PropertyChangedEvent.Property->GetFName();
+	if (ChangedPropName == GET_MEMBER_NAME_CHECKED(UBTTask_Blackboard, BlackboardKey.SelectedKeyName))
+	{
+		if (BlackboardKey.SelectedKeyType == UBlackboardKeyType_Enum::StaticClass() ||
+			BlackboardKey.SelectedKeyType == UBlackboardKeyType_NativeEnum::StaticClass())
+		{
+			IntValue = 0;
+		}
+	}
+
+#if WITH_EDITORONLY_DATA
+
+	UBlackboardKeyType* KeyCDO = BlackboardKey.SelectedKeyType ? BlackboardKey.SelectedKeyType->GetDefaultObject<UBlackboardKeyType>() : NULL;
+	if (ChangedPropName == GET_MEMBER_NAME_CHECKED(UBTTask_Blackboard, BasicOperation))
+	{
+		if (KeyCDO && KeyCDO->GetTestOperation() == EBlackboardKeyOperation::Basic)
+		{
+			OperationType = BasicOperation;
+		}
+	}
+	else if (ChangedPropName == GET_MEMBER_NAME_CHECKED(UBTTask_Blackboard, ArithmeticOperation))
+	{
+		if (KeyCDO && KeyCDO->GetTestOperation() == EBlackboardKeyOperation::Arithmetic)
+		{
+			OperationType = ArithmeticOperation;
+		}
+	}
+	else if (ChangedPropName == GET_MEMBER_NAME_CHECKED(UBTTask_Blackboard, TextOperation))
+	{
+		if (KeyCDO && KeyCDO->GetTestOperation() == EBlackboardKeyOperation::Text)
+		{
+			OperationType = TextOperation;
+		}
+	}
+
+#endif // WITH_EDITORONLY_DATA
+
+	BuildDescription();
+}
+
+void UBTTask_Blackboard::InitializeFromAsset(UBehaviorTree& Asset)
+{
+	Super::InitializeFromAsset(Asset);
+	BuildDescription();
+}
+#endif	// WITH_EDITOR
+
