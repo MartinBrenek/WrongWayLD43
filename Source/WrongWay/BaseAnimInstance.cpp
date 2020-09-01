@@ -15,7 +15,7 @@ void UBaseAnimInstance::NativeInitializeAnimation()
     BaseOwner = TryGetPawnOwner();
 }
 
-void UBaseAnimInstance::UpdateParameters_Implementation(FBlackboardKeySelector key)
+void UBaseAnimInstance::UpdateAnimatorState_Implementation(FBlackboardKeySelector key)
 {
     
 }
