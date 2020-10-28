@@ -1,0 +1,358 @@
+﻿# Game Czech translation.
+# Copyright 1998-2019 Epic Games, Inc. All Rights Reserved.
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Game\n"
+"POT-Creation-Date: 2020-10-22 16:55\n"
+"PO-Revision-Date: 2020-10-22 16:55\n"
+"Language-Team: \n"
+"Language: cs\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+
+#. Key:	08FD747249D7A254EDEDD58A5035E4D7
+#. SourceLocation:	/Game/FFWidgets/EndGame.EndGame_C:WidgetTree.TextBlock_6.Text
+#: /Game/FFWidgets/EndGame.EndGame_C:WidgetTree.TextBlock_6.Text
+msgctxt ",08FD747249D7A254EDEDD58A5035E4D7"
+msgid "Credits:"
+msgstr "Titulky"
+
+#. Key:	0E0237FB40F21851D19FB5A8326EC6F5
+#. SourceLocation:	/Game/FFWidgets/Settings/Settings.Settings_C:WidgetTree.TextBlock_104.Text
+#: /Game/FFWidgets/Settings/Settings.Settings_C:WidgetTree.TextBlock_104.Text
+msgctxt ",0E0237FB40F21851D19FB5A8326EC6F5"
+msgid "Texture Quality:"
+msgstr "Kvalita textur:"
+
+#. Key:	106C19524F06DA94E4F5BBB8A040242A
+#. SourceLocation:	/Game/FFWidgets/Settings/SelectSettings.Default__SelectSettings_C.Options(0).Options
+#: /Game/FFWidgets/Settings/SelectSettings.Default__SelectSettings_C.Options(0).Options
+msgctxt ",106C19524F06DA94E4F5BBB8A040242A"
+msgid "Low"
+msgstr "Střední"
+
+#. Key:	151D9DDB42A8DE2C67CCAE8071C7FD3B
+#. SourceLocation:	/Game/FFWidgets/InGameMenu.InGameMenu_C:WidgetTree.TextBlock.Text
+#: /Game/FFWidgets/InGameMenu.InGameMenu_C:WidgetTree.TextBlock.Text
+msgctxt ",151D9DDB42A8DE2C67CCAE8071C7FD3B"
+msgid "Save Game"
+msgstr "Uložit hru"
+
+#. Key:	1EE6F23A4B412AB53B04268809E8E822
+#. SourceLocation:	/Game/Texts/WormTextData/DialogEnd.DialogEnd.DisplayNameMap(0 - Value).DisplayNameMap
+#: /Game/Texts/WormTextData/DialogEnd.DialogEnd.DisplayNameMap(0 - Value).DisplayNameMap
+msgctxt ",1EE6F23A4B412AB53B04268809E8E822"
+msgid "AfterAudio"
+msgstr ""
+
+#. Key:	2EC7D0244E2542F174BEFEA1F89C873A
+#. SourceLocation:	/Game/FFWidgets/OrderInfo.OrderInfo_C:WidgetTree.TextBlock_54.Text
+#: /Game/FFWidgets/OrderInfo.OrderInfo_C:WidgetTree.TextBlock_54.Text
+msgctxt ",2EC7D0244E2542F174BEFEA1F89C873A"
+msgid "Order :"
+msgstr "Objednávka:"
+
+#. Key:	3CB82D6B4F1BC3B3A7C0BF8503C82B91
+#. SourceLocation:	/Game/Texts/WormTextData/DialogEnd.DialogEnd.DisplayNameMap(3 - Value).DisplayNameMap
+#: /Game/Texts/WormTextData/DialogEnd.DialogEnd.DisplayNameMap(3 - Value).DisplayNameMap
+msgctxt ",3CB82D6B4F1BC3B3A7C0BF8503C82B91"
+msgid "AfterFirstComplete"
+msgstr ""
+
+#. Key:	3D8654D84AE730A756F2C8B4F082F750
+#. SourceLocation:	/Game/FFWidgets/InGameMenu.InGameMenu_C:WidgetTree.TextBlock_342.Text
+#: /Game/FFWidgets/InGameMenu.InGameMenu_C:WidgetTree.TextBlock_342.Text
+msgctxt ",3D8654D84AE730A756F2C8B4F082F750"
+msgid "Mouse move - Look"
+msgstr "Myš - Pohled"
+
+#. Key:	40A39D14420E2AD56EA8489A2C72321F
+#. SourceLocation:	/Game/FFWidgets/HealthBar.HealthBar_C:WidgetTree.Name.Text
+#: /Game/FFWidgets/HealthBar.HealthBar_C:WidgetTree.Name.Text
+msgctxt ",40A39D14420E2AD56EA8489A2C72321F"
+msgid "Satan Babicka"
+msgstr ""
+
+#. Key:	49519CF34C727977C963F38C24F8A896
+#. SourceLocation:	/Game/FFWidgets/EndGame.EndGame_C:WidgetTree.TextBlock_8.Text
+#: /Game/FFWidgets/EndGame.EndGame_C:WidgetTree.TextBlock_8.Text
+msgctxt ",49519CF34C727977C963F38C24F8A896"
+msgid "You´re employee of the month."
+msgstr "Jsi zaměsnanec měsíce."
+
+#. Key:	4AD1056940D7481B7F75C2B0A25977E5
+#. SourceLocation:	/Game/FFWidgets/EndGame.EndGame_C:WidgetTree.TextBlock_11.Text
+#: /Game/FFWidgets/EndGame.EndGame_C:WidgetTree.TextBlock_11.Text
+msgctxt ",4AD1056940D7481B7F75C2B0A25977E5"
+msgid "Andrej Schneidgen - 3D Graphic, Animation. FX"
+msgstr "Andrej Schneidgen - 3D Grafika, Animace. FX"
+
+#. Key:	579DCAB740043FF488DF3188DC102126
+#. SourceLocation:	/Game/FFWidgets/InGameMenu.InGameMenu_C:WidgetTree.TextBlock_2.Text
+#: /Game/FFWidgets/InGameMenu.InGameMenu_C:WidgetTree.TextBlock_2.Text
+msgctxt ",579DCAB740043FF488DF3188DC102126"
+msgid "Load Game"
+msgstr "Načíst hru"
+
+#. Key:	590C3E3B4E7879F63042A7A67E97BC0F
+#. SourceLocation:	/Game/FFWidgets/EndGame.EndGame_C:WidgetTree.TextBlock_12.Text
+#: /Game/FFWidgets/EndGame.EndGame_C:WidgetTree.TextBlock_12.Text
+msgctxt ",590C3E3B4E7879F63042A7A67E97BC0F"
+msgid "Antonín Hojný - Code"
+msgstr "Antonín Hojný - Kódění"
+
+#. Key:	5ACC788B4E17DADEB6E0F8A701BA34FF
+#. SourceLocation:	/Game/FFWidgets/InGameMenu.InGameMenu_C:WidgetTree.TextBlock_190.Text
+#: /Game/FFWidgets/InGameMenu.InGameMenu_C:WidgetTree.TextBlock_190.Text
+msgctxt ",5ACC788B4E17DADEB6E0F8A701BA34FF"
+msgid "W, S, A, D - Move"
+msgstr "W, S, A, D - Pohyb"
+
+#. Key:	5B33D47448CD8670C9A748B423A258ED
+#. SourceLocation:	/Game/FFWidgets/InfoWidget.InfoWidget_C:WidgetTree.InteractText.Text
+#: /Game/FFWidgets/InfoWidget.InfoWidget_C:WidgetTree.InteractText.Text
+msgctxt ",5B33D47448CD8670C9A748B423A258ED"
+msgid "USE [E]"
+msgstr "Použít [E]"
+
+#. Key:	5CBEA74342A0E0838311ED802FFDAD11
+#. SourceLocation:	/Game/FFWidgets/Settings/SelectSettings.Default__SelectSettings_C.Options(2).Options
+#: /Game/FFWidgets/Settings/SelectSettings.Default__SelectSettings_C.Options(2).Options
+msgctxt ",5CBEA74342A0E0838311ED802FFDAD11"
+msgid "High"
+msgstr "Vysoké"
+
+#. Key:	65A96AE64BAA8A2DFCBFE1B993E0ACF3
+#. SourceLocation:	/Game/FFWidgets/Settings/Settings.Settings_C:WidgetTree.TextBlock_102.Text
+#: /Game/FFWidgets/Settings/Settings.Settings_C:WidgetTree.TextBlock_102.Text
+msgctxt ",65A96AE64BAA8A2DFCBFE1B993E0ACF3"
+msgid "Post Processing:"
+msgstr "Post procesi:"
+
+#. Key:	65B1B3DD4FDC4F0A5EF4868F60D14F51
+#. SourceLocation:	/Game/FFWidgets/Settings/SelectSettings.Default__SelectSettings_C.Options(1).Options
+#: /Game/FFWidgets/Settings/SelectSettings.Default__SelectSettings_C.Options(1).Options
+msgctxt ",65B1B3DD4FDC4F0A5EF4868F60D14F51"
+msgid "Medium"
+msgstr "Nízké"
+
+#. Key:	70E384BF4B461530F960E3A2153A7B2D
+#. SourceLocation:	/Game/Texts/WormTextData/DialogEnd.DialogEnd.DisplayNameMap(4 - Value).DisplayNameMap
+#: /Game/Texts/WormTextData/DialogEnd.DialogEnd.DisplayNameMap(4 - Value).DisplayNameMap
+msgctxt ",70E384BF4B461530F960E3A2153A7B2D"
+msgid "AfterLastComplete"
+msgstr ""
+
+#. Key:	71DC0E54426C085FE375169E6AFAEB39
+#. SourceLocation:	/Game/FFWidgets/WormWidget.WormWidget_C:WidgetTree.Subtitle.Text
+#: /Game/FFWidgets/WormWidget.WormWidget_C:WidgetTree.Subtitle.Text
+msgctxt ",71DC0E54426C085FE375169E6AFAEB39"
+msgid "fdsfsdf df dsfdsfdsfsdgfdsfdsfdggdgdfsdfsdfdsfasd sdsda sdasdsajjkjjkjjnj\r\nojolklkllůlklů"
+msgstr ""
+
+#. Key:	727149394A62A7FA0275C289EB0F59F2
+#. SourceLocation:	/Game/FFWidgets/Settings/SelectSettings.Default__SelectSettings_C.Options(3).Options
+#: /Game/FFWidgets/Settings/SelectSettings.Default__SelectSettings_C.Options(3).Options
+msgctxt ",727149394A62A7FA0275C289EB0F59F2"
+msgid "Ultra"
+msgstr "Ultra"
+
+#. Key:	8362E295408AA05C159B788FA2DAFBFF
+#. SourceLocation:	/Game/FFWidgets/InGameMenu.InGameMenu_C:WidgetTree.TextBlock_3.Text
+#: /Game/FFWidgets/InGameMenu.InGameMenu_C:WidgetTree.TextBlock_3.Text
+msgctxt ",8362E295408AA05C159B788FA2DAFBFF"
+msgid "Load Check point"
+msgstr "Načíst checkpoint"
+
+#. Key:	8581AC3741B8BEE54A273D84925C3C2A
+#. SourceLocation:	/Game/FFWidgets/OrderInfo.OrderInfo_C:WidgetTree.TextBlock_120.Text
+#: /Game/FFWidgets/OrderInfo.OrderInfo_C:WidgetTree.TextBlock_120.Text
+msgctxt ",8581AC3741B8BEE54A273D84925C3C2A"
+msgid "Find :"
+msgstr "Potřebujem:"
+
+#. Key:	8D75F7B542C76F32AB7E85B9E4DD3686
+#. SourceLocation:	/Game/FFWidgets/EndGame.EndGame_C:WidgetTree.TextBlock_9.Text
+#: /Game/FFWidgets/EndGame.EndGame_C:WidgetTree.TextBlock_9.Text
+msgctxt ",8D75F7B542C76F32AB7E85B9E4DD3686"
+msgid "Barbara Dodoková - 3D Graphic, 2D Graphic"
+msgstr "Barbara Dodoková - 3D Grafika, 2D Grafika"
+
+#. Key:	9397DB714D7194F0F0B3908E49BA0639
+#. SourceLocation:	/Game/FFWidgets/OrderInfo.OrderInfo_C:ExecuteUbergraph_OrderInfo [Script Bytecode]
+#: /Game/FFWidgets/OrderInfo.OrderInfo_C:ExecuteUbergraph_OrderInfo [Script Bytecode]
+msgctxt ",9397DB714D7194F0F0B3908E49BA0639"
+msgid "Order is ready"
+msgstr "Objednávka je připravená"
+
+#. Key:	9500810D4AF3D830D73ADDA90C57B7F1
+#. SourceLocation:	/Game/FFWidgets/InGameMenu.InGameMenu_C:WidgetTree.TextBlock_518.Text
+#: /Game/FFWidgets/InGameMenu.InGameMenu_C:WidgetTree.TextBlock_518.Text
+msgctxt ",9500810D4AF3D830D73ADDA90C57B7F1"
+msgid "E - Use, Throw order on customer"
+msgstr "E - Použit, Mrskni objednávku po zakazniku"
+
+#. Key:	974AFAD74EEB540AE10BA5AE3CF2A743
+#. SourceLocation:	/Game/Texts/WormTextData/DialogEnd.DialogEnd.DisplayNameMap(1 - Value).DisplayNameMap
+#: /Game/Texts/WormTextData/DialogEnd.DialogEnd.DisplayNameMap(1 - Value).DisplayNameMap
+msgctxt ",974AFAD74EEB540AE10BA5AE3CF2A743"
+msgid "AfterAnimation"
+msgstr ""
+
+#. Key:	97CD9F174F47AE91ECE7218D1EAB5308
+#. SourceLocation:	/Game/FFWidgets/SaveSlot.SaveSlot_C:WidgetTree.TextBlock_101.Text
+#: /Game/FFWidgets/SaveSlot.SaveSlot_C:WidgetTree.TextBlock_101.Text
+msgctxt ",97CD9F174F47AE91ECE7218D1EAB5308"
+msgid "Save"
+msgstr "Uložit"
+
+#. Key:	99E6B9F847C304BD54987DAB84A8301C
+#. SourceLocation:	/Game/FFWidgets/SaveSlot.SaveSlot_C:WidgetTree.TextBlock_198.Text
+#: /Game/FFWidgets/SaveSlot.SaveSlot_C:WidgetTree.TextBlock_198.Text
+msgctxt ",99E6B9F847C304BD54987DAB84A8301C"
+msgid "Load"
+msgstr "Načíst"
+
+#. Key:	9BC24F10454FA61929ACC0B377DC739E
+#. SourceLocation:	/Game/FFWidgets/SaveSlot.SaveSlot_C:SetEnable [Script Bytecode]
+#: /Game/FFWidgets/SaveSlot.SaveSlot_C:SetEnable [Script Bytecode]
+msgctxt ",9BC24F10454FA61929ACC0B377DC739E"
+msgid "Empty"
+msgstr "Prázdný"
+
+#. Key:	A5D881ED455EB841109557B2266DF459
+#. SourceLocation:	/Game/FFWidgets/Settings/Settings.Settings_C:WidgetTree.TextBlock_31.Text
+#: /Game/FFWidgets/Settings/Settings.Settings_C:WidgetTree.TextBlock_31.Text
+msgctxt ",A5D881ED455EB841109557B2266DF459"
+msgid "Anti-Aliasing:"
+msgstr "ProtiLizing"
+
+#. Key:	AE5868F2410502C461B86194AACF4905
+#. SourceLocation:	/Game/FFWidgets/EndGame.EndGame_C:WidgetTree.TextBlock_7.Text
+#: /Game/FFWidgets/EndGame.EndGame_C:WidgetTree.TextBlock_7.Text
+msgctxt ",AE5868F2410502C461B86194AACF4905"
+msgid "Martin Břenek - Code, Sound"
+msgstr "Martin Břenek - Programování, Prdění"
+
+#. Key:	B159C091460CDF3143866BB7276C8DCF
+#. SourceLocation:	/Game/FFWidgets/TextPanel.TextPanel_C:WidgetTree.Text.Text
+#: /Game/FFWidgets/TextPanel.TextPanel_C:WidgetTree.Text.Text
+msgctxt ",B159C091460CDF3143866BB7276C8DCF"
+msgid "Ahoj bla bla"
+msgstr ""
+
+#. Key:	B2ED0BEB437E82B4DB37C7B4A849F7E8
+#. SourceLocation:	/Game/FFWidgets/Settings/Settings.Settings_C:WidgetTree.TextBlock_103.Text
+#: /Game/FFWidgets/Settings/Settings.Settings_C:WidgetTree.TextBlock_103.Text
+msgctxt ",B2ED0BEB437E82B4DB37C7B4A849F7E8"
+msgid "Shadow Quality:"
+msgstr "Kvalita stínu:"
+
+#. Key:	B7CE4A9A4FC3CE0F8F4BAE8D50AF7ABE
+#. SourceLocation:	/Game/Texts/WormTextData/DialogEnd.DialogEnd.DisplayNameMap(2 - Value).DisplayNameMap
+#: /Game/Texts/WormTextData/DialogEnd.DialogEnd.DisplayNameMap(2 - Value).DisplayNameMap
+msgctxt ",B7CE4A9A4FC3CE0F8F4BAE8D50AF7ABE"
+msgid "AfterTime"
+msgstr ""
+
+#. Key:	BBA9031C4A504B5FBF772EBE8650713A
+#. SourceLocation:	/Game/FFWidgets/EndGame.EndGame_C:WidgetTree.TextBlock_5.Text
+#: /Game/FFWidgets/EndGame.EndGame_C:WidgetTree.TextBlock_5.Text
+msgctxt ",BBA9031C4A504B5FBF772EBE8650713A"
+msgid "Congratulations."
+msgstr "Gratuluji"
+
+#. Key:	C75C4A194F06FA685F450FA43C0A163C
+#. SourceLocation:	/Game/FFWidgets/InGameMenu.InGameMenu_C:WidgetTree.TextBlock_93.Text
+#: /Game/FFWidgets/InGameMenu.InGameMenu_C:WidgetTree.TextBlock_93.Text
+msgctxt ",C75C4A194F06FA685F450FA43C0A163C"
+msgid "Controlls:"
+msgstr "Ovládání:"
+
+#. Key:	DCEB2AAB4A7B43478AEC3FB9D3F3EDDB
+#. SourceLocation:	/Game/FFWidgets/Settings/Settings.Settings_C:WidgetTree.TextBlock_30.Text
+#: /Game/FFWidgets/Settings/Settings.Settings_C:WidgetTree.TextBlock_30.Text
+msgctxt ",DCEB2AAB4A7B43478AEC3FB9D3F3EDDB"
+msgid "Resolution:"
+msgstr "Rozlišení:"
+
+#. Key:	DEEDC33C48E2A5890EC9819E5952ECE4
+#. SourceLocation:	/Game/FFWidgets/InGameMenu.InGameMenu_C:WidgetTree.TextBlock_519.Text
+#: /Game/FFWidgets/InGameMenu.InGameMenu_C:WidgetTree.TextBlock_519.Text
+msgctxt ",DEEDC33C48E2A5890EC9819E5952ECE4"
+msgid "Resume"
+msgstr "Zpět"
+
+#. Key:	EXIT
+#. SourceLocation:	/Game/Texts/MiscTexts.MiscTexts
+#: /Game/Texts/MiscTexts.MiscTexts
+msgctxt "MiscTexts,EXIT"
+msgid "Exit"
+msgstr "Odejít"
+
+#. Key:	NONE
+#. SourceLocation:	/Game/Texts/MiscTexts.MiscTexts
+#: /Game/Texts/MiscTexts.MiscTexts
+msgctxt "MiscTexts,NONE"
+msgid "None"
+msgstr "Nic"
+
+#. Key:	RESTART
+#. SourceLocation:	/Game/Texts/MiscTexts.MiscTexts
+#: /Game/Texts/MiscTexts.MiscTexts
+msgctxt "MiscTexts,RESTART"
+msgid "Restart"
+msgstr "Restart"
+
+#. Key:	WAITINGCOSTUMER
+#. SourceLocation:	/Game/Texts/MiscTexts.MiscTexts
+#: /Game/Texts/MiscTexts.MiscTexts
+msgctxt "MiscTexts,WAITINGCOSTUMER"
+msgid "Waiting on customer"
+msgstr "Čekám na zakaznika"
+
+#. Key:	HelloWorm
+#. SourceLocation:	/Game/Texts/WormTextData/WormText.WormText
+#: /Game/Texts/WormTextData/WormText.WormText
+msgctxt "WormTExt,HelloWorm"
+msgid "Nazdar lidi, jsem tady zase.\r\nHi people, I'm here again."
+msgstr "Nazdar lidi, jsem tady zase."
+
+#. Key:	HelloWorm2
+#. SourceLocation:	/Game/Texts/WormTextData/WormText.WormText
+#: /Game/Texts/WormTextData/WormText.WormText
+msgctxt "WormTExt,HelloWorm2"
+msgid "Než vám pustím nějakou muziku, chci varovat nováčky tady ve Vietnamu.\r\nBefore I play you some music, I want to warn rookies here in Vietnam."
+msgstr "Než vám pustím nějakou muziku, chci varovat nováčky tady ve Vietnamu."
+
+#. Key:	HelloWorm3
+#. SourceLocation:	/Game/Texts/WormTextData/WormText.WormText
+#: /Game/Texts/WormTextData/WormText.WormText
+msgctxt "WormTExt,HelloWorm3"
+msgid "One ugly lizard lives here. No, it's not poisonous or anything. It just makes such interesting sounds.\r\nŽije tady jedna hnusná ještěrka. Né, není jedovatá nebo něco. Jenom vydáva takový zajímavý zvuky."
+msgstr "Žije tady jedna hnusná ještěrka. Né, není jedovatá nebo něco. Jenom vydáva takový zajímavý zvuky."
+
+#. Key:	HelloWorm4
+#. SourceLocation:	/Game/Texts/WormTextData/WormText.WormText
+#: /Game/Texts/WormTextData/WormText.WormText
+msgctxt "WormTExt,HelloWorm4"
+msgid "I'm talking about the famous fucking lizard.\r\nMluvím o slavný fakovací ještěrce. "
+msgstr "Mluvím o slavný fakovací ještěrce. "
+
+#. Key:	HelloWorm5
+#. SourceLocation:	/Game/Texts/WormTextData/WormText.WormText
+#: /Game/Texts/WormTextData/WormText.WormText
+msgctxt "WormTExt,HelloWorm5"
+msgid "So when you hear someone swearing at you, it won't be a vietcong but this little monster.\r\nTakže až uslyšíte jak vám někdo nadáva tak to nebude vietcong ale tahle malá potvora."
+msgstr "Takže až uslyšíte jak vám někdo nadáva tak to nebude vietcong ale tahle malá potvora."
+
+#. Key:	HelloWorm6
+#. SourceLocation:	/Game/Texts/WormTextData/WormText.WormText
+#: /Game/Texts/WormTextData/WormText.WormText
+msgctxt "WormTExt,HelloWorm6"
+msgid "Don't fuck with me or I'll pull out a gun and run in between you.\r\nNeserte mně nebo vytáhnu bouchačku a vlítnu tam mezi vás."
+msgstr "Neserte mně nebo vytáhnu bouchačku a vlítnu tam mezi vás."
+
