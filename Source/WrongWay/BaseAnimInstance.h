@@ -23,7 +23,7 @@ class WRONGWAY_API UBaseAnimInstance : public UAnimInstance
 		virtual void NativeInitializeAnimation() override;
 
 		UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category="Base Methods")
-		void UpdateAnimatorState(FBlackboardKeySelector key);
+		void UpdateAnimatorState(uint8 byte);
 
 		UPROPERTY(BlueprintAssignable, BlueprintCallable, BlueprintReadWrite, Category = "Base Events")
 		FAnimationEndedCallback OnAnimationEnded;
