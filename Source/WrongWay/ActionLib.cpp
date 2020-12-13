@@ -3,9 +3,9 @@
 
 #include "ActionLib.h"
 
-FOnTweenVectorChange UActionLib::Lift(FVector Position, AActor* Target, const FTestDelegate& CallBack)
+void UActionLib::Lift(FVector Position, AActor* Target, const FTestDelegate& CallBack)
 {
     UTweenContainer* Container = UTweenManagerComponent::CreateTweenContainerStatic();
     UTweenVector* Move = Container->AppendTweenMoveActorTo(Target, Position,5, ETweenEaseType::EaseInCirc);
-    return Move->OnTweenEndDelegate;
+    //return Move->OnTweenEndDelegate;
 }

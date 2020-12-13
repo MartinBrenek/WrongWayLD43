@@ -4,9 +4,8 @@
 
 #include "CoreMinimal.h"
 #include "Kismet/BlueprintFunctionLibrary.h"
-#include "TweenContainer.h"
 #include "TweenManagerComponent.h"
-#include "TweenVector.h"
+#include "TweenContainer.h"
 #include "ActionLib.generated.h"
 
 
@@ -24,7 +23,7 @@ class WRONGWAY_API UActionLib : public UBlueprintFunctionLibrary
 public:
 
 	UFUNCTION(BlueprintCallable, Category = "Actions" )
-	FOnTweenVectorChange Lift(FVector Position, AActor* Target, const FTestDelegate& Callback);
+	void Lift(FVector Position, AActor* Target, const FTestDelegate& Callback);
 	
 	UPROPERTY(BlueprintReadOnly, Category = "Test")
 	FTestDelegate TestCallback;
