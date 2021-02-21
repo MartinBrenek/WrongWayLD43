@@ -165,11 +165,11 @@ class UWorld* UDetailCustomizationInstance::GetWorld() const
 	{
 		if (GEditor->bIsSimulatingInEditor)
 		{
-			return GEditor->GetPIEWorldContext()->World();
+			return GEditor->EditorWorld; //GetPIEWorldContext()->World();
 		}
 		else
 		{
-			return GEditor->PlayWorld;//->GetEditorWorldContext().World();
+			return GEditor->PlayWorld; //->GetEditorWorldContext().World();
 		}
 	}
 
