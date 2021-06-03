@@ -31,6 +31,7 @@
 #include "Widgets/Layout/SScrollBox.h"
 #include "Widgets/SNullWidget.h"
 #include "Widgets/Layout/SScaleBox.h"
+#include "Widgets/Images/SImage.h"
 #include "Kismet2/SClassPickerDialog.h"
 #include "EditorFontGlyphs.h"
 #include "Widgets/Text/STextBlock.h"
@@ -106,6 +107,14 @@ void SBluEdModeWidget::Construct(const FArguments& InArgs)
 					.AutoHeight()
 					[
 						SNew(SBorder)
+						.Visibility(TAttribute<EVisibility>::Create(TAttribute<EVisibility>::FGetter::CreateLambda([]()->EVisibility 
+						{ 
+							if (FBluEdMode* BluEdMode = FBluEdMode::GetPtr())
+							{
+								return !BluEdMode->IsRunningSingleTool() ? EVisibility::Visible : EVisibility::Collapsed;
+							}
+							return EVisibility::Collapsed;
+						})))
 						.BorderImage(FEditorStyle::GetBrush("DetailsView.AdvancedDropdownBorder"))
 						.Padding(FMargin(0.0f, 3.0f, 16.0f, 0.0f))
 						[
@@ -115,7 +124,6 @@ void SBluEdModeWidget::Construct(const FArguments& InArgs)
 							.ContentPadding(2)
 							.VAlign(VAlign_Top)
 							.OnClicked(this, &SBluEdModeWidget::OnExpandButtonClicked)
-							//.ToolTipText(this, &SAdvancedDropdownRow::GetAdvancedPulldownToolTipText)
 							[
 								SNew(SImage)
 								.Image(this, &SBluEdModeWidget::GetExpandButtonImage)
@@ -133,7 +141,14 @@ void SBluEdModeWidget::Construct(const FArguments& InArgs)
 					.AutoHeight()
 					[
 						SNew(SHorizontalBox)
-						.Visibility(this, &SBluEdModeWidget::GetButtonsVisibility)
+						.Visibility(TAttribute<EVisibility>::Create(TAttribute<EVisibility>::FGetter::CreateLambda([]()->EVisibility 
+						{ 
+							if (FBluEdMode* BluEdMode = FBluEdMode::GetPtr())
+							{
+								return !BluEdMode->IsRunningSingleTool() ? EVisibility::Visible : EVisibility::Collapsed;
+							}
+							return bIsExpanded ? EVisibility::Visible : EVisibility::Collapsed;
+						})))
 						+ SHorizontalBox::Slot()
 						[
 							SNew(SBorder)
@@ -327,7 +342,7 @@ void SBluEdModeWidget::Construct(const FArguments& InArgs)
 								.Padding(1.0f)
 								[
 									SNew(SVerticalBox)
-									.Visibility(this, &SBluEdModeWidget::GetSectionWidgetVisibility,EBluEdModeWidgetSectionsVisibility::DetailsView)
+									.Visibility(this, &SBluEdModeWidget::GetSectionWidgetVisibility, EBluEdModeWidgetSectionsVisibility::DetailsView)
 									+ SVerticalBox::Slot()
 									.Padding(2.0f)
 									.AutoHeight()
@@ -345,6 +360,7 @@ void SBluEdModeWidget::Construct(const FArguments& InArgs)
 										.Visibility(this, &SBluEdModeWidget::GetApplyChangesButtonVisibility)
 										.ButtonColorAndOpacity(FLinearColor(0,0,0,.25f))
 										.OnClicked(this,&SBluEdModeWidget::OnApplyChangesToToolBlueprint)
+										.ToolTipText(LOCTEXT("ApplyChanges_ToolTip", "Apply changes to blueprint."))
 										[
 											SNew(SImage)
 											.Image(FEditorScriptingToolsStyle::Get()->GetBrush("BluEdMode.ApplyInstanceChanges"))
@@ -589,6 +605,11 @@ bool SBluEdModeWidget::IsSectionSwitcherVisible() const
 
 bool SBluEdModeWidget::IsSectionVisible(EBluEdModeWidgetSectionsVisibility InSection) const
 {
+	if (InSection == EBluEdModeWidgetSectionsVisibility::DetailsView)
+	{
+		return IsDetailsWidgetDisplayingAnyProperty();
+	}
+
 	return (SectionsVisibilityFlags & (1 << InSection)) != 0;
 }
 
@@ -663,11 +684,6 @@ FReply SBluEdModeWidget::OnExpandButtonClicked()
 {
 	bIsExpanded = !bIsExpanded;
 	return FReply::Handled();
-}
-
-EVisibility SBluEdModeWidget::GetButtonsVisibility() const
-{
-	return bIsExpanded ? EVisibility::Visible : EVisibility::Collapsed;
 }
 
 TSharedRef<SWidget> SBluEdModeWidget::GetToolkitSlateWidget()
@@ -1098,15 +1114,5 @@ FText SBluEdModeWidget::GetEditorModeToolInstanceLoadingButtonToolTipText() cons
 	return LOCTEXT("LoadEditorModeToolInstance_ToolTip", "Load Tool");
 }
 
-FReply SBluEdModeWidget::OnSetBluEdModeActive(bool bActivate)
-{
-	FBluEdMode::SetActive(bActivate);
-	return FReply::Handled();
-}
-
-EVisibility SBluEdModeWidget::GetBluEdModeActivateButtonVisibility(bool bActivate) const
-{
-	return (bActivate != FBluEdMode::IsActive()) ? EVisibility::Visible : EVisibility::Collapsed;
-}
 
 #undef LOCTEXT_NAMESPACE 

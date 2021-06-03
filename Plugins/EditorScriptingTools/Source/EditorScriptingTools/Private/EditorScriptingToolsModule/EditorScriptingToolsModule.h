@@ -11,6 +11,7 @@
 #include "AssetTypeCategories.h"
 #include "Templates/SubclassOf.h"
 
+
 class UClass;
 class UObject;
 class UWorld;
@@ -21,6 +22,7 @@ class FPropertyEditorModule;
 class ISettingsModule;
 class FWorkspaceItem;
 class FSpawnTabArgs;
+class SDockTab;
 
 class UEditorModeToolUtilityBlueprint;
 class UEditorUserDefinedSettings;
@@ -30,6 +32,9 @@ class UDetailCustomizationUtilityBlueprint;
 class UEditorUserDefinedActions;
 
 class UActorComponent;
+
+typedef FName FEditorModeID;
+enum class EMapChangeType : uint8;
 
 
 class FEditorScriptingToolsModule : public IEditorScriptingToolsModule
@@ -96,6 +101,9 @@ public:
 	virtual FColor GetScriptingUtilityAssetColor(const IEditorScriptingUtilityAssetInterface* ScriptingUtilityAsset) const  override;
 	//~ End IEditorScriptingToolsModule
 
+
+	UEditorModeToolUtilityBlueprint* GetRegisteredEditorModeBlueprintUtility(const FEditorModeID& ModeID) const;
+
 private:
 
 	void OnPostEngineInit();
@@ -142,6 +150,9 @@ private:
 	void UnregisterEditorModeToolUtilityBlueprint(UEditorModeToolUtilityBlueprint* ModeToolBlueprint);
 	bool CanRegisterEditorModeToolUtilityBlueprint(const UEditorModeToolUtilityBlueprint* ModeToolBlueprint) const;
 	bool IsEditorModeToolUtilityBlueprintRegistered(const UEditorModeToolUtilityBlueprint* ModeToolBlueprint) const;
+	void RegisterCustomEdMode(UEditorModeToolUtilityBlueprint* ModeToolBlueprint);
+	void UnregisterCustomEdMode(UEditorModeToolUtilityBlueprint* ModeToolBlueprint, bool bRemoveFromRegisterList);
+
 
 	void RegisterEditorSettings();
 	void UnregisterEditorSettings();
@@ -189,7 +200,7 @@ private:
 	TArray< TSharedPtr<IAssetTypeActions> > CreatedAssetTypeActions;
 
 
-
+	TMap<TWeakObjectPtr<UEditorModeToolUtilityBlueprint>, FEditorModeID> RegisteredEdModeTools;
 	TMap<TWeakObjectPtr<UDetailCustomizationUtilityBlueprint>, FCustomizedClassInfo> RegisteredCustomDetailLayouts;
 	TMap<TWeakObjectPtr<UComponentVisualizerUtilityBlueprint>, FComponentClassInfo> RegisteredComponentVisualizers;
 	TMap<TWeakObjectPtr<UEditorUserDefinedSettingsUtilityBlueprint>, FEditorSettingsEntryInfo> RegisteredUserDefinedSettings;
