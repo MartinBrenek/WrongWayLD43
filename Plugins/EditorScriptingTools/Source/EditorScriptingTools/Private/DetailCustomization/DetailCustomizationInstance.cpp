@@ -9,7 +9,6 @@
 #include "DetailLayoutBuilder.h"
 #include "DetailWidgetRow.h"
 #include "IDetailPropertyRow.h"
-#include "Engine/Engine.h"
 #include "UnrealEngine.h"
 #include "NativeDetailCustomizationInstance.h"
 #include "EditorScriptingToolsUtils.h"
@@ -165,11 +164,11 @@ class UWorld* UDetailCustomizationInstance::GetWorld() const
 	{
 		if (GEditor->bIsSimulatingInEditor)
 		{
-			return GEditor->EditorWorld; //GetPIEWorldContext()->World();
+			return GEditor->GetPIEWorldContext()->World();
 		}
 		else
 		{
-			return GEditor->PlayWorld; //->GetEditorWorldContext().World();
+			return GEditor->GetEditorWorldContext().World();
 		}
 	}
 

@@ -4,9 +4,11 @@
 
 #pragma once
 
+#include "CoreMinimal.h"
 #include "Widgets/SCompoundWidget.h"
 #include "Widgets/DeclarativeSyntaxSupport.h"
-
+#include "Input/Reply.h"
+#include "Layout/Visibility.h"
 
 class IDetailsView;
 class FBluEdMode;
@@ -15,6 +17,8 @@ class SBorder;
 class SVerticalBox;
 class SBox;
 class SButton;
+
+enum class EBluEdModeChangeMode : uint8;
 
 
 class SBluEdModeWidget : public SCompoundWidget
@@ -80,7 +84,6 @@ private:
 	//Expand Button
 	const FSlateBrush* GetExpandButtonImage() const;
 	FReply OnExpandButtonClicked();
-	EVisibility GetButtonsVisibility() const;
 
 	// Toolkit Widget
 	TSharedRef<SWidget> GetToolkitSlateWidget();
@@ -120,6 +123,4 @@ private:
 
 	FSlateColor GetEditorModeToolInstanceLoadingStatusTextColor() const;
 	FText GetEditorModeToolInstanceLoadingButtonToolTipText() const;
-	FReply OnSetBluEdModeActive(bool bActivate);
-	EVisibility GetBluEdModeActivateButtonVisibility(bool bActivate) const;
 };

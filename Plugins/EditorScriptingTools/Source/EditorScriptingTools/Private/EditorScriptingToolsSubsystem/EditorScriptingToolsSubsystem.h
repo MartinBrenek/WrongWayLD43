@@ -12,14 +12,6 @@
 #include "EditorScriptingToolsSubsystem.generated.h"
 
 
-
-class UEditorModeToolUtilityBlueprint;
-class UComponentVisualizerUtilityBlueprint;
-class UDetailCustomizationUtilityBlueprint;
-class UEditorUserDefinedSettingsUtilityBlueprint;
-
-
-
 UCLASS(config = EditorPerProjectUserSettings)
 class UEditorScriptingToolsSubsystem : public UEditorSubsystem
 {
@@ -39,7 +31,7 @@ public:
 
 public:
 	UPROPERTY(config)
-		TSoftObjectPtr<UEditorModeToolUtilityBlueprint> LastLoadedEdModeToolBlueprint;
+		TSoftObjectPtr<class UEditorModeToolUtilityBlueprint> LastLoadedEdModeToolBlueprint;
 
 	UPROPERTY(config, EditAnywhere, BlueprintReadOnly, Category = General)
 		bool bEnableThumbnailOverlayOnRegisteredUtilities;
@@ -47,14 +39,17 @@ public:
 	UPROPERTY(config, EditAnywhere, BlueprintReadOnly, Category = EditorMode)
 		bool bEnableEditingWhileSimulating;
 
-	UPROPERTY(config, EditAnywhere, Category = ComponentVisualizers)
-		TArray<TSoftObjectPtr<UComponentVisualizerUtilityBlueprint>> ComponentVisualizerUtilityBlueprints;
+	UPROPERTY(config)
+		TArray<TSoftObjectPtr<class  UEditorModeToolUtilityBlueprint>> CustomEdModeUtilityBlueprints;
 
-	UPROPERTY(config, EditAnywhere, Category = DetailCustomizations)
-		TArray<TSoftObjectPtr<UDetailCustomizationUtilityBlueprint>> DetailCustomizationUtilityBlueprints;
+	UPROPERTY(config)
+		TArray<TSoftObjectPtr<class UComponentVisualizerUtilityBlueprint>> ComponentVisualizerUtilityBlueprints;
 
-	UPROPERTY(config, EditAnywhere, Category = UserDefinedSettings)
-		TArray<TSoftObjectPtr<UEditorUserDefinedSettingsUtilityBlueprint>> EditorUserDefinedSettingsUtilityBlueprints;
+	UPROPERTY(config)
+		TArray<TSoftObjectPtr<class UDetailCustomizationUtilityBlueprint>> DetailCustomizationUtilityBlueprints;
+
+	UPROPERTY(config)
+		TArray<TSoftObjectPtr<class UEditorUserDefinedSettingsUtilityBlueprint>> EditorUserDefinedSettingsUtilityBlueprints;
 
 	UPROPERTY(config, EditAnywhere, Category = UserDefinedPlacementCategories)
 		TSet<FUserDefinedPlacementCategoryInfo> PlacementCategoriesInfo;

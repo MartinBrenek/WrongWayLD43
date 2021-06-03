@@ -7,6 +7,7 @@
 
 #include "Widgets/SBoxPanel.h"
 #include "Widgets/Input/SButton.h"
+#include "Widgets/Layout/SBox.h"
 #include "Widgets/Docking/SDockTab.h"
 #include "Widgets/Input/SComboBox.h"
 #include "Widgets/Layout/SSpacer.h"
@@ -14,22 +15,26 @@
 #include "Widgets/Layout/SScrollBox.h"
 #include "Widgets/Layout/SWidgetSwitcher.h"
 #include "EditorScriptingToolsSubsystem.h"
-#include <EditorUserDefinedSettingsUtilityBlueprint.h>
+#include "EditorUserDefinedSettingsUtilityBlueprint.h"
+#include "EditorModeToolUtilityBlueprint.h"
+#include "EditorUserDefinedActions.h"
 #include "SEditorScriptingUtilityAssetSlot.h"
 #include "Widgets/Layout/SHeader.h"
 #include <PropertyEditorModule.h>
-#include <ISinglePropertyView.h>
-#include <EditorFontGlyphs.h>
-#include <BluEdMode.h>
-#include <EditorUserDefinedCommands.h>
-#include <Framework/MultiBox/MultiBoxBuilder.h>
+#include "ISinglePropertyView.h"
+#include "EditorFontGlyphs.h"
+#include "BluEdMode.h"
+#include "EditorUserDefinedCommands.h"
+#include "Framework/MultiBox/MultiBoxBuilder.h"
 #include "EditorScriptingToolsStyle.h"
-#include <SSingleObjectDetailsPanel.h>
+#include "SSingleObjectDetailsPanel.h"
 #include "EditorScriptingToolsSubsystemDetails.h"
-#include <IDetailsView.h>
+#include "IDetailsView.h"
 #include "ComponentVisualizerUtilityBlueprint.h"
 #include "IEditorScriptingToolsModule.h"
 #include "SPropertiesBrowser.h"
+#include "PropertyPath.h"
+
 
 #define LOCTEXT_NAMESPACE "SEditorScriptingToolsTab"
 
@@ -327,21 +332,27 @@ TSharedRef<SWidget> SEditorScriptingToolsTab::CreateSettingsSectionWidget_BluEdM
 {
 	TSharedRef<SVerticalBox> SectionWidget = SNew(SVerticalBox);
 
-	SectionWidget->AddSlot().AutoHeight()[CreateSectionHeader(LOCTEXT("ActiveEdModeTool", " Active Editor Mode Tool "))];
-	if (FBluEdMode* BluEdMode = FBluEdMode::GetPtr())
+	//
 	{
-		if (BluEdMode->HasValidToolInstance())
+		SectionWidget->AddSlot().AutoHeight()[CreateSectionHeader(LOCTEXT("EditorModes", " Registered Custom BluEdModes"))];
+
+		auto& SingleToolModes = UEditorScriptingToolsSubsystem::GetSubsystem()->CustomEdModeUtilityBlueprints;
+		if (SingleToolModes.Num() == 0)
 		{
-			SectionWidget->AddSlot().AutoHeight().HAlign(HAlign_Left)[SNew(SEditorScriptingUtilityAssetSlot, BluEdMode->GetModeToolBlueprint(), 0)];
+			SectionWidget->AddSlot()[CreateWarningMessageWidegt(LOCTEXT("NoSingleToolModes", "No custom blueprint editor modes have been registered."))];
 		}
 		else
 		{
-			SectionWidget->AddSlot()[CreateWarningMessageWidegt(LOCTEXT("BluEdModeToolNotLoaded", "BluEd Mode is active , but no tool is loaded."))];
+			int32 SlotIdx = 0;
+			for (auto& BlueprintObjPtr : SingleToolModes)
+			{
+				if (UEditorModeToolUtilityBlueprint* ModeToolBlueprint = BlueprintObjPtr.LoadSynchronous())
+				{
+					SectionWidget->AddSlot().AutoHeight().HAlign(HAlign_Left)[SNew(SEditorScriptingUtilityAssetSlot, ModeToolBlueprint, SlotIdx)];
+					SlotIdx++;
+				}
+			}
 		}
-	}
-	else
-	{
-		SectionWidget->AddSlot()[CreateWarningMessageWidegt(LOCTEXT("BluEdModeInactive", "BluEd Mode is not active."))];
 	}
 
 	return SectionWidget;

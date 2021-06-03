@@ -14,7 +14,6 @@
 #include "DetailLayoutBuilder.h"
 #include "DetailWidgetRow.h"
 #include "IDetailPropertyRow.h"
-#include "Engine/Engine.h"
 #include "UnrealEngine.h"
 #include "Editor.h"
 #include "Modules/ModuleManager.h"
@@ -29,6 +28,7 @@
 #include "NativeDetailCustomizationInstancesManager.h"
 #include "DetailCategoryBuilderHandle.h"
 #include "DetailCustomizationUtilityBlueprint.h"
+#include "EditorScriptingToolsTypes.h"
 
 
 #define LOCTEXT_NAMESPACE "NativeDetailCustomizationInstance"
